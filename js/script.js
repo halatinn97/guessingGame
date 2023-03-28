@@ -12,24 +12,43 @@ let gameWon = false;
 let input = document.querySelector("#input");
 let output = document.querySelector("#output");
 
-//Button
+//Button & its event listeners
 
 let button = document.querySelector("button");
 button.addEventListener("click", clickHandler, false);
 
 //(Seperation of actions - modularization - to increase expansion flexibility in the future)
-function clickHandler() {
-    playGame();
+
+window.addEventListener("keydown", keydownHandler, false);
+
+function keydownHandler(event) {
+    if (event.key === "Enter") {
+        validateIndput();
+    }
 }
+
+function clickHandler() {
+    validateIndput();
+}
+
+//Input validation 
+
+function validateIndput() {
+    playersGuess = parseInt(input.value);
+
+    if (isNaN(playersGuess)) {
+        output.innerHTML = "Please enter a number.";
+    } else {
+        playGame();
+    }
+}
+
+//Running game functionality
 
 function playGame() {
     guessesRemaining--;
     guessesMade++;
     gameState = " Guess: " + guessesMade + ", Remaining: " + guessesRemaining;
-
-
-    //Player input interpreted as number - remember: input typed into HTML input default: string
-    playersGuess = parseInt(input.value);
 
     if (playersGuess > mysteryNumber) {
         output.innerHTML = "That's too high." + gameState;
@@ -54,6 +73,8 @@ function playGame() {
         endGame();
     }
 }
+
+//End game functionality 
 
 function endGame() {
     if (gameWon) {
