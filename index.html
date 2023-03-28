@@ -6,12 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guessing Game</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <p id="output">I am thinking of a number between 0 and 99.</p>
-    <input id="input" type="text" placeholder="Enter your guess..."></input>
-    <button>guess</button>
+
+    <div id="page-wrapper">
+        <div id="page-text-wrapper">
+            <p id="output">I am thinking of a number between 0 and 99...</p>
+            <input id="input" type="text" placeholder="Enter your guess..." autofocus></input>
+        </div>
+        <button>guess</button>
+
+        <div id="stage">
+            <div id="scale"></div>
+            <div id="arrow"></div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="js/script.js"></script>
 </body>
 
